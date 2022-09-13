@@ -5,7 +5,7 @@ $(document).ready(function() {
   
 
   $(texting).on("input", function () {
-    const counter = ($(this).parents("form").find(".counter")[0]);
+    const counter = $(this).parents("form").find(".counter")[0];
     let isNegative = counter.classList.contains("negative");
     let charsRemaining = maxChars - Number(this.value.length);
     if (charsRemaining < 0) {
