@@ -33,9 +33,9 @@ label {
 
 #tweet-text {
   background-color: #f4f1ec;
-  border-right-width: 0px;
-  border-left-width: 0px;
-  border-top-width: 0px;
+  border-right-width: 0em;
+  border-left-width: 0em;
+  border-top-width: 0em;
   border-bottom-width: 0.15em;
   height: 2.5em;
   width: 100%;

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css"/>
     <link rel="stylesheet" href="/styles/new-tweet.css"/>
+    <link rel="stylesheet" href="/styles/tweets.css"/>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -39,7 +40,7 @@
       </div>
     </nav>
 
-    <header>
+    <header class="profile">
       <div>
           <img src="/images/profile-hex.png"> 
       </div>
@@ -64,6 +65,32 @@
           <output name="counter" class="counter" for="tweet-text">140</output>
         </div>
       </form>
+    </section>
+
+
+    <!-- Created tweets listed here -->
+    <br>
+    <section class="tweets">
+      <article>
+        <header>
+          <div class= "tweetTopLeft">
+            <i class="fa-solid fa-user"></i>
+            <h6 class="name">Rhoda Jacobs</h6>
+          </div>
+          <p class="username">@MrsJacobs</p>
+        </header>
+        <div class="content">
+          <p>Hello Worlds!</p>
+        </div>
+        <footer>
+        <p>10 days ago</p>
+        <div class="icons">
+          <i class="fa-solid fa-flag"></i>
+          <i class="fa-solid fa-retweet"></i>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        </footer>
+      </article>
     </section>
     </main>
   </body>
