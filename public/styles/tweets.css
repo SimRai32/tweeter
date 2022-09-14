@@ -23,13 +23,18 @@
   margin-top: 1em;
 }
 
-.tweets article header .name{
+.tweets article header .name {
   margin: 0.2em;
 }
 
-.tweets article header .username{
+.tweets article header .username {
   margin: 0em;
   color: rgb(160, 160, 245);
+}
+
+.tweets article header img {
+  height: 1.5em;
+  width: 1.5em;
 }
  
 .tweets article header .tweetTopLeft {
