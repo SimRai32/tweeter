@@ -12,6 +12,10 @@
   align-items: center;
 }
 
+.tweets article:hover {
+  box-shadow: 0.25em 0.25em 5px rgb(117, 113, 113);
+}
+
 .tweets article header {
   display: flex;
   justify-content: space-between;
@@ -50,6 +54,10 @@
   gap: 0.5em;
   margin: 0.5em;
   color: rgb(63, 63, 117);
+}
+
+.tweets article footer i:hover {
+  color: rgb(156, 163, 106);
 }
 
 .tweets article .content {

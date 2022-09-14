@@ -3,7 +3,6 @@ $(document).ready(function() {
   const texting = $( "#tweet-text" )[0];
   const maxChars = 140;
   
-
   $(texting).on("input", function () {
     const counter = $(this).parents("form").find(".counter")[0];
     let isNegative = counter.classList.contains("negative");
