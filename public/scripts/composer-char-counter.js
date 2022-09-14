@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  console.log("ready");
   const texting = $( "#tweet-text" )[0];
   const maxChars = 140;
   

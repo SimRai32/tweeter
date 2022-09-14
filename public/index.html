@@ -26,6 +26,7 @@
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+    <script type="text/javascript" src="/scripts/form-submission.js"></script>
   </head>
 
   <body>
@@ -49,28 +50,28 @@
       <div>
           <h2>Your Name</h2>
       </div>
-  </header>
+    </header>
   
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
-      <h2>Compose Tweet</h2>
-      <form action="/tweets" method="POST" class="tweet">
-        <div class="tweet-top">
-          <label for="tweet-text">What are you humming about?</label>
-          <textarea name="text" id="tweet-text"></textarea>
-        </div>
-        <div class="tweet-bottom">
-          <button type="submit">Tweet</button>
-          <output name="counter" class="counter" for="tweet-text">140</output>
-        </div>
-      </form>
-    </section>
-    <br>
-    
-    <!-- Created tweets listed here -->
-    <section class="tweets" id="tweets-container">
-    </section>
+        <h2>Compose Tweet</h2>
+        <form action="/tweets" method="POST" class="tweet">
+          <div class="tweet-top">
+            <label for="tweet-text">What are you humming about?</label>
+            <textarea name="text" id="tweet-text"></textarea>
+          </div>
+          <div class="tweet-bottom">
+            <button type="submit" id="submit">Tweet</button>
+            <output name="counter" class="counter" for="tweet-text">140</output>
+          </div>
+        </form>
+      </section>
+      <br>
+
+      <!-- Created tweets listed here -->
+      <section class="tweets" id="tweets-container">
+      </section>
     </main>
   </body>
 </html>

@@ -5,7 +5,6 @@
  */
 
 $( document ).ready(function() {
-  console.log( "ready!" );
   // Fake data taken from initial-tweets.json
   const data = [
     {
