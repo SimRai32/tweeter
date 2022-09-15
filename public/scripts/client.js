@@ -42,7 +42,7 @@ $( document ).ready(function() {
     // cycle through each tweet and append it into the tweets container
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
-      $('#tweets-container').append($tweet);
+      $('#tweets-container').prepend($tweet);
     }
   }
 
@@ -51,5 +51,26 @@ $( document ).ready(function() {
       render(tweetData);
     })
   } 
+
+  $("form").on("submit", function( event ) {
+    event.preventDefault();
+    const maxChars = 140;
+    // every $(this).serialize returns at least 'text='
+    const serializedData = $(this).serialize();
+    // slice used to get rid of 'text='
+    const errorCheck = $(this).serialize().slice(5).length;
+    if (!errorCheck) {
+      alert ("You need to type something in before submitting the tweet!");
+    } else if (errorCheck > maxChars) {
+      alert ("Your tweet is too long!");
+    } else {
+      $.post("/tweets", serializedData);
+      console.log($(this).find("textarea"));
+      $("#tweets-container").empty();
+      loadTweets(renderTweets);
+    } 
+    
+  });
 loadTweets(renderTweets);
+
 });
