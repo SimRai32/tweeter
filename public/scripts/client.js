@@ -6,8 +6,12 @@
 
 $( document ).ready(function() {
   // Fake data taken from initial-tweets.json
-
-
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+  
   const createTweetElement  = function (tweet) {
     // remember to move br down after implementing deconstructing and reconstructing the tweets after each submission
     // make jQuery construct new elements
@@ -22,7 +26,7 @@ $( document ).ready(function() {
           <p class="username">${tweet.user.handle}</p>
         </header>
         <div class="content">
-          <p>${tweet.content.text}</p>
+          <p>${escape(tweet.content.text)}</p>
         </div>
         <footer>
         <p>${time}</p>
