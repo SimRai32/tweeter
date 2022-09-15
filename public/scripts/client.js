@@ -5,16 +5,26 @@
  */
 
 $( document ).ready(function() {
-  // Fake data taken from initial-tweets.json
+  const $hideError = $(".error");
+  $hideError.hide();
+
+  // function detects and alters malicious text
   const escape = function (str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
-  
+
+  // function determines what error message to display
+  const errorMessage = (error) => {
+    if (error === 0) {
+      return "Can't post tweet if you haven't typed anything";
+    }
+    return "Tweet too long";
+  };
+
+  // function makes jQuery construct new elements
   const createTweetElement  = function (tweet) {
-    // remember to move br down after implementing deconstructing and reconstructing the tweets after each submission
-    // make jQuery construct new elements
     const time = timeago.format(tweet.created_at);
     let $tweet = $(`
       <article>
@@ -40,17 +50,18 @@ $( document ).ready(function() {
     <br>
     `);
     return $tweet;
-  }
+  };
 
-  const renderTweets = function(tweets) {
-    // cycle through each tweet and append it into the tweets container
+  // function cycles through each tweet and append it into the tweets container
+  const renderTweets = function(tweets) { 
     $("#tweets-container").empty();
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
       $('#tweets-container').prepend($tweet);
     }
-  }
+  };
 
+  // function loads tweets on to the page
   const loadTweets = function() {
     $.ajax("/tweets", {
       method: "GET",
@@ -58,21 +69,24 @@ $( document ).ready(function() {
       .then(function(data) {
         renderTweets(data);
       });
-  } 
+  };
 
+  // submits new tweet to be added to list of tweets
   $("form").on("submit", function( event ) {
     event.preventDefault();
     const maxChars = 140;
     const $tweetText = $(this).find("textarea")
-    const $counter = $(this).find(".counter");
-    // every $(this).serialize returns at least 'text='
-    const serializedData = $(this).serialize();
-    // slice used to get rid of 'text='
+    const $postError = $(this).parents(".new-tweet").find(".error")[0];
+    const $counter = $(this).find(".counter");   
+    const serializedData = $(this).serialize();  // slice used to get rid of 'text='
     const errorCheck = $(this).serialize().slice(5).length;
-    if (!errorCheck) {
-      alert ("You need to type something in before submitting the tweet!");
-    } else if (errorCheck > maxChars) {
-      alert ("Your tweet is too long!");
+
+    if (!errorCheck || errorCheck > maxChars) {
+      let errMessage = errorMessage(errorCheck);
+      const textToReplace = $( $postError ).find("h4");
+      textToReplace.text(errMessage);
+      $( $postError ).slideDown("slow");
+
     } else {
       $.ajax({
         method: "POST",
@@ -82,9 +96,10 @@ $( document ).ready(function() {
         .then(function () {
           loadTweets();
         });
+      //resets the compose tweet section
       $tweetText.val(""); 
       $counter.val("140");
-      
+      $hideError.hide();
     }
     
   });

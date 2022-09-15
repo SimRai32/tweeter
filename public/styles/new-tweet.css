@@ -41,6 +41,15 @@ label {
   width: 100%;
 }
 
+.error {
+  display: flex;
+  color: red;
+}
+
+.error h4 {
+  margin: 0px;
+}
+
 .negative {
   color: red;
 }
