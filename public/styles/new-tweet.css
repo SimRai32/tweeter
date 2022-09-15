@@ -27,6 +27,10 @@ button {
   padding: 0.25em 0.6em;
 }
 
+button:hover {
+  box-shadow: 0em 0em 0.5em  rgb(0, 0, 0);
+}
+
 label {
   align-self: flex-start;
 }
