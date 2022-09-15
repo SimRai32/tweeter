@@ -48,9 +48,12 @@ $( document ).ready(function() {
   }
 
   const loadTweets = function() {
-    $.get("/tweets", function (tweetData) {
-      renderTweets(tweetData);
+    $.ajax("/tweets", {
+      method: "GET",
     })
+      .then(function(data) {
+        renderTweets(data);
+      });
   } 
 
   $("form").on("submit", function( event ) {
@@ -73,18 +76,11 @@ $( document ).ready(function() {
         data: serializedData,
       })
         .then(function () {
-          $.ajax("/tweets", {
-            method: "GET",
-          })
-          .then(function(data) {
-            renderTweets(data);
-          });
-        })
-      // $tweetText.val(""); 
-      // $counter.val("140");
-      // $.get("/tweets",function (tweetData) {
-      //   renderTweets(tweetData);
-      // });
+          loadTweets();
+        });
+      $tweetText.val(""); 
+      $counter.val("140");
+      
     }
     
   });
