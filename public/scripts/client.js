@@ -57,7 +57,7 @@ $( document ).ready(function() {
     $("#tweets-container").empty();
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
-      $('#tweets-container').prepend($tweet);
+      $('#tweets-container').append($tweet);
     }
   };
 
@@ -76,16 +76,24 @@ $( document ).ready(function() {
     event.preventDefault();
     const maxChars = 140;
     const $tweetText = $(this).find("textarea")
-    const $postError = $(this).parents(".new-tweet").find(".error")[0];
+    const postError = $(this).parents(".new-tweet").find(".error")[0];
     const $counter = $(this).find(".counter");   
     const serializedData = $(this).serialize();  // slice used to get rid of 'text='
     const errorCheck = $(this).serialize().slice(5).length;
+    let errMessage = errorMessage(errorCheck);
+    const $textToReplace = $( postError ).find("h4");
+
+
+    if ($( postError ).is(":visible")) {
+      $( postError ).slideUp("fast");
+    }
 
     if (!errorCheck || errorCheck > maxChars) {
-      let errMessage = errorMessage(errorCheck);
-      const textToReplace = $( $postError ).find("h4");
-      textToReplace.text(errMessage);
-      $( $postError ).slideDown("slow");
+      // SetTimeout used to allow slideUp to execute before text is changed
+      setTimeout(() => {
+        $textToReplace.text(errMessage);
+      $( postError ).slideDown("fast");
+      }, 200);
 
     } else {
       $.ajax({
@@ -99,7 +107,6 @@ $( document ).ready(function() {
       //resets the compose tweet section
       $tweetText.val(""); 
       $counter.val("140");
-      $hideError.hide();
     }
     
   });

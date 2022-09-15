@@ -1,6 +1,7 @@
 nav {
   color: #FFFFFF;
-  background-color: #4056A1;
+  background-color: #912200;
+  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
   height: 120px;
   width:100%;
   padding-left: 1.5em;
@@ -33,4 +34,13 @@ margin-bottom: 0.5em;
 nav span {
   font-family: "Bungee", cursive;
   margin-top: 2.33em;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 1024px) {
+  nav {
+    background-color: #4056A1;
+    background-image: none;
+  }
+
 }

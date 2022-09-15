@@ -5,6 +5,11 @@ form {
   width: 100%;
 }
 
+.new-tweet {
+  margin-top: 520px;
+  width: 90%;
+}
+
 .tweet-top {
   display: flex;
   flex-direction: column;
@@ -48,12 +53,24 @@ label {
 .error {
   display: flex;
   color: red;
+  border: solid red 2px;
+  justify-content: center;
 }
 
 .error h4 {
   margin: 0px;
 }
 
+.error i {
+  margin-right: 0.5em;
+}
+
 .negative {
   color: red;
 }
+
+@media screen and (min-width: 1024px) {
+  .new-tweet {
+    margin-top: 200px;
+  }
+  }
