@@ -10,6 +10,12 @@ nav {
   top: 0;
 }
 
+nav span {
+  font-family: "Bungee", cursive;
+  margin-top: 1em;
+  font-weight: 600;
+}
+
 .navContainer {
   display: flex;
   justify-content: space-between;
@@ -29,12 +35,6 @@ margin-bottom: 0.5em;
 
 .navRightSide i {
   color: red;
-}
-
-nav span {
-  font-family: "Bungee", cursive;
-  margin-top: 2.33em;
-  font-weight: 600;
 }
 
 @media screen and (min-width: 1024px) {

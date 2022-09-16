@@ -2,12 +2,10 @@
   display: flex;
   margin-top: 120px;
   flex-direction: column;
-  height: 350px;
+  height: 400px;
   width: 100%;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  top: 0px;
   background-color: #912200;
   background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
 }
@@ -17,15 +15,10 @@
   color: white;
 }
 
-strong {
-  font-weight: 900;
-}
-
 @media screen and (min-width: 1024px) {
   .profile {
     margin: 240px 60px;
     width: 50%;
-    position: static;
   }
 
   .profile h2 {

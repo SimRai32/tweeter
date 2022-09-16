@@ -4,6 +4,7 @@
   align-items: center;
   width:90%
 }
+
 .tweets article {
   display: flex;
   flex-direction: column;
@@ -26,6 +27,7 @@
 
 .tweets article header .name {
   margin: 0.2em;
+  font-size: 1em;
 }
 
 .tweets article header .username {
@@ -71,6 +73,7 @@
   justify-content: flex-start;
   width: 90%;
 }
+
 .tweets article .content p {
   margin-top: 0.5em;
 }
@@ -78,18 +81,13 @@
 .body {
   width:100%;
 }
-.container {
-  display: flex;
-  flex-direction: column;
-  width:100%;
-  align-items: center;
-}
 
 @media screen and (min-width: 1024px) {
   .body {
     display: flex;
     justify-content: space-around;
   }
+
   .right.body {
     display: flex;
     flex-direction: column;

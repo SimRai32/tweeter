@@ -6,7 +6,6 @@ form {
 }
 
 .new-tweet {
-  margin-top: 520px;
   width: 90%;
 }
 
@@ -16,6 +15,7 @@ form {
   align-items: flex-start;
   width: 100%;
 }
+
 .tweet-bottom {
   display: flex;
   justify-content: space-between;
@@ -73,4 +73,4 @@ label {
   .new-tweet {
     margin-top: 200px;
   }
-  }
+}
