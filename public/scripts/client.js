@@ -4,12 +4,12 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-$( document ).ready(function() {
+$(document).ready(function() {
   const $hideError = $(".error");
   $hideError.hide();
 
   // function detects and alters malicious text
-  const escape = function (str) {
+  const escape = function(str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
@@ -24,7 +24,7 @@ $( document ).ready(function() {
   };
 
   // function makes jQuery construct new elements
-  const createTweetElement  = function (tweet) {
+  const createTweetElement  = function(tweet) {
     const time = timeago.format(tweet.created_at);
     let $tweet = $(`
       <article>
@@ -53,7 +53,7 @@ $( document ).ready(function() {
   };
 
   // function cycles through each tweet and append it into the tweets container
-  const renderTweets = function(tweets) { 
+  const renderTweets = function(tweets) {
     $("#tweets-container").empty();
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
@@ -72,40 +72,41 @@ $( document ).ready(function() {
   };
 
   // submits new tweet to be added to list of tweets
-  $("form").on("submit", function( event ) {
+  $("form").on("submit", function(event) {
     event.preventDefault();
     const maxChars = 140;
-    const $tweetText = $(this).find("textarea")
+    const $tweetText = $(this).find("textarea");
     const postError = $(this).parents(".new-tweet").find(".error")[0];
-    const $counter = $(this).find(".counter");   
+    const $counter = $(this).find(".counter");  
     const serializedData = $(this).serialize();  // slice used to get rid of 'text='
     const errorCheck = $(this).serialize().slice(5).length;
     let errMessage = errorMessage(errorCheck);
-    const $textToReplace = $( postError ).find("h4");
+    const $textToReplace = $(postError).find("h4");
 
 
-    if ($( postError ).is(":visible")) {
-      $( postError ).slideUp("fast");
+    if ($(postError).is(":visible")) {
+      $(postError).slideUp("fast");
     }
 
     if (!errorCheck || errorCheck > maxChars) {
-      // SetTimeout used to allow slideUp to execute before text is changed
+      // setTimeout used to allow slideUp to execute before text is changed
       setTimeout(() => {
         $textToReplace.text(errMessage);
-      $( postError ).slideDown("fast");
+        $(postError).slideDown("fast");
       }, 200);
 
     } else {
+      // updates tweets array with the newest tweet and is then loaded on to the page
       $.ajax({
         method: "POST",
         url: "/tweets",
         data: serializedData,
       })
-        .then(function () {
+        .then(function() {
           loadTweets();
         });
-      //resets the compose tweet section
-      $tweetText.val(""); 
+      // resets the compose tweet section
+      $tweetText.val("");
       $counter.val("140");
     }
     
