@@ -19,4 +19,4 @@ Tweeter is a simple, single-page Twitter clone built with Node and Express.
 ## Getting Started
 
 - Install all dependencies (using the `npm install` command).
-- Run the development web server using the `npm run local` command.
+- Run the development web server using the `npm start` command.
