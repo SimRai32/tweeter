@@ -52,12 +52,12 @@ $(document).ready(function() {
     return $tweet;
   };
 
-  // function cycles through each tweet and append it into the tweets container
+  // function cycles through each tweet and prepend it into the tweets container
   const renderTweets = function(tweets) {
     $("#tweets-container").empty();
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
-      $('#tweets-container').append($tweet);
+      $('#tweets-container').prepend($tweet);
     }
   };
 
@@ -78,8 +78,8 @@ $(document).ready(function() {
     const $tweetText = $(this).find("textarea");
     const postError = $(this).parents(".new-tweet").find(".error")[0];
     const $counter = $(this).find(".counter");  
-    const serializedData = $(this).serialize();  // slice used to get rid of 'text='
-    const errorCheck = $(this).serialize().slice(5).length;
+    const serializedData = $(this).serialize();  
+    const errorCheck = $(this).serialize().slice(5).length; // slice used to get rid of 'text='
     let errMessage = errorMessage(errorCheck);
     const $textToReplace = $(postError).find("h4");
 
